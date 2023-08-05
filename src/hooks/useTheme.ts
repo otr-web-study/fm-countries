@@ -1,6 +1,6 @@
-import { useThemeStore } from '@/stores/theme-store';
 import { storeToRefs } from 'pinia';
 import { watchEffect } from 'vue';
+import { useThemeStore } from '@/stores/theme-store';
 
 export const useTheme = () => {
   const store = useThemeStore();

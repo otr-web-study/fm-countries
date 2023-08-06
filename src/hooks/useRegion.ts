@@ -1,7 +1,7 @@
 import type { Ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useControlsStore } from '@/stores/controls-store';
-import type { Region } from '@/types/region';
+import type { Region } from '@/types';
 
 interface onSelect {
   (region: Region | ''): void;

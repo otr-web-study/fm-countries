@@ -3,7 +3,7 @@ import AppSelect from './AppSelect.vue';
 import TheSearch from './TheSearch.vue';
 import { useRegion } from '@/hooks/useRegion';
 import { useSearch } from '@/hooks/useSearch';
-import type { Region } from '@/types/region';
+import type { Region } from '@/types';
 
 const [region, handleSelectRegion] = useRegion();
 const [search, handleSearch] = useSearch();

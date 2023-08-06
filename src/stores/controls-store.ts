@@ -1,6 +1,6 @@
 import { ref } from 'vue';
 import { defineStore } from 'pinia';
-import type { Region } from '@/types/region';
+import type { Region } from '@/types';
 
 export const useControlsStore = defineStore('controls-store', () => {
   const search = ref('');

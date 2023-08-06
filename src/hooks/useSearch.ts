@@ -3,15 +3,15 @@ import { storeToRefs } from 'pinia';
 import { useControlsStore } from '@/stores/controls-store';
 
 interface onSearch {
-  (e: Event): void;
+  (value: string): void;
 }
 
 export const useSearch = (): [Ref<string>, onSearch] => {
   const store = useControlsStore();
   const { search } = storeToRefs(store);
 
-  const handleSearch: onSearch = (e) => {
-    store.setSearch((e.target as HTMLInputElement).value);
+  const handleSearch: onSearch = (value) => {
+    store.setSearch(value);
   };
 
   return [search, handleSearch];

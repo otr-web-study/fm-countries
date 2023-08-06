@@ -9,6 +9,7 @@ module.exports = {
         txt: 'var(--colors-text)',
         bg: 'var(--colors-bg)',
         ui: 'var(--colors-ui-base)',
+        input: 'var(--colors-input)',
       },
     },
     fontFamily: {

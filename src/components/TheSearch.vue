@@ -17,7 +17,7 @@ const handleInput = (evt: Event) => {
 <template>
   <label
     for="search"
-    class="flex w-full max-w-full shrink-[1] items-center gap-6 rounded-radii bg-ui px-10 py-[17px] shadow-sh-1 md:max-w-[480px]"
+    class="flex w-full max-w-full shrink-[1] items-center gap-6 rounded-radii bg-ui px-[30px] py-[17px] shadow-sh-1 md:max-w-[480px]"
   >
     <SearchOutlined class="h-5 w-5" />
     <input

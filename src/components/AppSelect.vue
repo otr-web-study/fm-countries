@@ -26,7 +26,7 @@ const handleSelect = (option: string) => {
 <template>
   <div
     :tabindex="0"
-    class="flex min-w-[248px] shrink-0 cursor-pointer flex-col gap-1 self-start text-sm md:min-w-[200px] md:self-auto"
+    class="relative flex min-w-[248px] shrink-0 cursor-pointer flex-col gap-1 self-start text-sm md:min-w-[200px] md:self-auto"
     @blur="isOpen = false"
     @click="isOpen = !isOpen"
   >
@@ -55,7 +55,10 @@ const handleSelect = (option: string) => {
       leave-from-class="translate-y-0 opacity-1"
       leave-to-class="-translate-y-[10%] opacity-0"
     >
-      <div v-if="isOpen" class="relative z-0 rounded-radii bg-ui py-3 shadow-sh-1">
+      <div
+        v-if="isOpen"
+        class="absolute top-[calc(100%+4px)] z-0 w-full rounded-radii bg-ui py-3 shadow-sh-1"
+      >
         <div
           v-for="(option, i) of options"
           :key="i"

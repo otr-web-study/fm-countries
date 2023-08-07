@@ -8,7 +8,7 @@ const { clearControls } = useControlsStore();
 </script>
 
 <template>
-  <header class="bg-ui py-10 shadow-sh-1 md:py-8">
+  <header class="bg-ui py-10 shadow-sh-1 md:py-[26px]">
     <TheContainer class="flex items-center justify-between">
       <AppLink
         :to="{ name: 'home' }"

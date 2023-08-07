@@ -1,6 +1,7 @@
 import type { Region } from './region';
 
 export interface Country {
+  cca3: string;
   name: string;
   capital: string;
   population: number;

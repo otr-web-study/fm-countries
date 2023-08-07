@@ -12,7 +12,10 @@ const infoItemsProps: InfoItemsProps[] = ['population', 'region', 'capital'];
   <article
     class="h-full overflow-hidden rounded-radii bg-ui shadow-sh-1 transition-transform duration-300 hover:-translate-y-[2px] hover:translate-x-[2px] hover:shadow-sh-2"
   >
-    <RouterLink :to="{ name: 'home' }" class="flex h-full flex-col">
+    <RouterLink
+      :to="{ name: 'details', params: { code: country.cca2 } }"
+      class="flex h-full flex-col"
+    >
       <img
         :src="country.flags.svg"
         :alt="country.flags.alt"

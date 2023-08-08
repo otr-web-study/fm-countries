@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import CountryInfoItem from './CountryInfoItem.vue';
+import { capitalize, formatVal } from '@/utils/utils';
 import type { Country } from '@/types';
 defineProps<{ country: Country }>();
 
@@ -13,7 +14,7 @@ const infoItemsProps: InfoItemsProps[] = ['population', 'region', 'capital'];
     class="h-full overflow-hidden rounded-radii bg-ui shadow-sh-1 transition-transform duration-300 hover:-translate-y-[2px] hover:translate-x-[2px] hover:shadow-sh-2"
   >
     <RouterLink
-      :to="{ name: 'details', params: { code: country.cca2 } }"
+      :to="{ name: 'details', params: { code: country.cca3 } }"
       class="flex h-full flex-col"
     >
       <img
@@ -32,8 +33,8 @@ const infoItemsProps: InfoItemsProps[] = ['population', 'region', 'capital'];
         <ul class="mt-[clamp(19px,7.2%,23px)] flex flex-col gap-[2px]">
           <li v-for="propName in infoItemsProps" :key="propName">
             <CountryInfoItem
-              :name="propName"
-              :value="country[propName]"
+              :name="capitalize(propName)"
+              :value="formatVal(country[propName])"
               class="text-[clamp(14px,7.2cqw,16px)]"
             />
           </li>

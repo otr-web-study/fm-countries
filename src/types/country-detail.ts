@@ -1,5 +1,10 @@
 import type { Country } from '.';
 
-export interface CountryDetail extends Country {
-  в;
+export interface CountryDetails extends Country {
+  nativeName: string;
+  subregion: string;
+  tld: string;
+  currencies: string[];
+  languages: string[];
+  borders: string[];
 }

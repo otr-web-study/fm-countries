@@ -4,11 +4,12 @@ import axios from 'axios';
 import { useCountriesStore } from '@/stores/countries-store';
 import { useControlsStore } from '@/stores/controls-store';
 import { ALL_COUNTRIES } from '@/config';
+import { convertDataCountries } from '@/utils/utils';
 import type { ApiCountry } from '@/types';
 
 export const useCountries = () => {
   const countriesStore = useCountriesStore();
-  const { setFulfilled, setPending, setRejected } = countriesStore;
+  const { setFulfilled, setPending, setRejected, loadCodeNameMap } = countriesStore;
   const { list, status, error } = storeToRefs(countriesStore);
   const { region, search } = storeToRefs(useControlsStore());
 
@@ -21,13 +22,9 @@ export const useCountries = () => {
 
     try {
       const { data } = await axios.get<ApiCountry[]>(ALL_COUNTRIES);
-      setFulfilled(
-        data.map((c) => ({
-          ...c,
-          name: c.name.official ? c.name.official : c.name.common,
-          capital: c.capital.length ? c.capital[0] : '',
-        })),
-      );
+      const [converted, codeNameMap] = convertDataCountries(data);
+      setFulfilled(converted);
+      loadCodeNameMap(codeNameMap);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         setRejected(error.message);

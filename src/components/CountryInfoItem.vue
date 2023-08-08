@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { capitalize, formatVal } from '@/utils/utils';
-defineProps<{ name: string; value: string | number }>();
+interface InfoItemProps {
+  name: string;
+  value?: string | number;
+}
+
+withDefaults(defineProps<InfoItemProps>(), { value: '-' });
 </script>
 
 <template>
   <p>
-    <span class="font-semibold">{{ capitalize(name) }}:</span>
-    {{ formatVal(value) }}
+    <span class="font-semibold">{{ name }}:</span>
+    {{ value }}
   </p>
 </template>

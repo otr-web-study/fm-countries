@@ -43,7 +43,10 @@ const handleSelect = (option: string) => {
           leave-to-class="opacity-0"
         >
           <ChevronDown v-if="!value" class="h-4 w-4" />
-          <CloseOutlined v-else class="h-4 w-4" @click.stop="emits('clear')" />
+          <button v-else @click.stop="emits('clear')">
+            <span class="sr-only">clear</span>
+            <CloseOutlined class="h-4 w-4" />
+          </button>
         </Transition>
       </div>
     </div>

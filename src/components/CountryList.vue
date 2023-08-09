@@ -12,7 +12,7 @@ const { list, status, error } = useCountries();
   <ThePreloader v-else-if="status === 'loading'" />
   <ul
     v-else
-    class="grid grid-cols-[min(100%,328px)] justify-center gap-[50px] pb-20 pt-[42px] md:grid-cols-[repeat(auto-fit,minmax(260px,1fr))] md:gap-x-[73px] md:gap-y-[76px] md:pt-[49px]"
+    class="grid grid-cols-[min(100%,328px)] justify-center gap-[50px] pb-20 pt-[42px] md:grid-cols-2 md:gap-x-[73px] md:gap-y-[76px] md:pt-[49px] grid-3:grid-cols-3 grid-4:grid-cols-4"
   >
     <TransitionGroup
       enter-active-class="duration-300 ease"

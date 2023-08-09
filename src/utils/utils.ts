@@ -24,7 +24,9 @@ export const convertDataCountries = (data: ApiCountry[]): [Country[], Record<str
 export const convertDetails = (country: ApiCountryDetails): CountryDetails => ({
   ...country,
   name: country.name.common ? country.name.common : country.name.official,
-  nativeName: country.name.nativeName[Object.keys(country.name.nativeName)[0]].common || '',
+  nativeName: Object.keys(country.name.nativeName).length
+    ? country.name.nativeName[Object.keys(country.name.nativeName)[0]].common
+    : country.name.common,
   capital: country.capital.length ? country.capital[0] : '',
   currencies: Object.values(country.currencies).map((currency) => currency.name),
   languages: Object.values(country.languages),

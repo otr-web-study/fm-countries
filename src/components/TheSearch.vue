@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import SearchOutlined from '@/components/icons/SearchOutlined.vue';
+import CloseOutlined from './icons/CloseOutlined.vue';
 
 interface SearchProps {
   value: string;
@@ -11,6 +12,10 @@ const emits = defineEmits<{ (e: 'search', value: string): void }>();
 
 const handleInput = (evt: Event) => {
   emits('search', (evt.target as HTMLInputElement).value);
+};
+
+const handleClear = () => {
+  emits('search', '');
 };
 </script>
 
@@ -25,7 +30,21 @@ const handleInput = (evt: Event) => {
       id="search"
       @input="handleInput"
       :placeholder="placeholder"
-      class="w-full bg-ui text-sm outline-0"
+      autocomplete="off"
+      class="flex-grow bg-ui text-sm outline-none"
     />
+    <Transition
+      enter-active-class="duration-300 ease"
+      enter-from-class="opacity-0"
+      enter-to-class="opacity-1"
+      leave-active-class="duration-300"
+      leave-from-class="opacity-1"
+      leave-to-class="opacity-0"
+    >
+      <button v-if="value" @click="handleClear">
+        <span class="sr-only">clear</span>
+        <CloseOutlined class="h-4 w-4" />
+      </button>
+    </Transition>
   </label>
 </template>

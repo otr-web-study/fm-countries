@@ -10,12 +10,8 @@ const { clearControls } = useControlsStore();
 <template>
   <header class="bg-ui py-10 shadow-sh-1 md:py-[26px]">
     <TheContainer class="flex items-center justify-between">
-      <AppLink
-        :to="{ name: 'home' }"
-        class="text-lg font-extrabold md:text-2xl"
-        @click="clearControls"
-      >
-        Where is the world?
+      <AppLink :to="{ name: 'home' }" @click="clearControls">
+        <h1 class="text-lg font-extrabold md:text-2xl">Where is the world?</h1>
       </AppLink>
       <ThemeSwitcher />
     </TheContainer>

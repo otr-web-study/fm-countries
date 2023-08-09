@@ -1,4 +1,5 @@
-import { computed } from 'vue';
+import { computed, ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 import axios from 'axios';
 import { useDetailsStore } from '@/stores/details-store';
@@ -7,21 +8,23 @@ import { filterByCode } from '@/config';
 import { convertDetails } from '@/utils/utils';
 import type { ApiCountryDetails } from '@/types';
 
-export const useDetails = (cc: string) => {
+export const useDetails = () => {
   const detailsStore = useDetailsStore();
   const { setFulfilled, setPending, setRejected } = detailsStore;
   const { details, status, error } = storeToRefs(detailsStore);
   const { setNameByCode } = useCountriesStore();
+  const route = useRoute();
+  const cc = ref(Array.isArray(route.params.code) ? route.params.code[0] : route.params.code);
 
-  const detailsByCode = computed(() => (details.value?.cca3 === cc ? details.value : null));
+  const detailsByCode = computed(() => (details.value?.cca3 === cc.value ? details.value : null));
 
   const fetchDetails = async () => {
-    if (status.value === 'loading' || details.value?.cca3 === cc) return;
+    if (status.value === 'loading' || details.value?.cca3 === cc.value) return;
 
     setPending();
 
     try {
-      const { data } = await axios.get<ApiCountryDetails>(filterByCode(cc));
+      const { data } = await axios.get<ApiCountryDetails>(filterByCode(cc.value));
 
       const details = convertDetails(data);
       setFulfilled(details);
@@ -34,9 +37,16 @@ export const useDetails = (cc: string) => {
     }
   };
 
-  if (!detailsByCode.value) {
-    fetchDetails();
-  }
+  fetchDetails();
+
+  watch(
+    () => route.params.code,
+    () => {
+      cc.value = Array.isArray(route.params.code) ? route.params.code[0] : route.params.code;
+      fetchDetails();
+    },
+    { deep: true },
+  );
 
   return { details: detailsByCode, status, error };
 };

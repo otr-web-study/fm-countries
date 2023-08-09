@@ -20,12 +20,13 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: ()
+- Solution URL: (https://www.frontendmentor.io/solutions/countries-api-with-color-theme-switcher-tdsrc9VBiu)
 - Live Site URL: (https://chic-choux-88504d.netlify.app/)
 
 ### Built with
 
 - Vuejs
+- Pinia
 - TypeScript
 - Tailwindcss
 

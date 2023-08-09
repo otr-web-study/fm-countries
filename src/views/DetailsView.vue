@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router';
 import ButtonBack from '@/components/ButtonBack.vue';
 import ThePreloader from '@/components/ThePreloader.vue';
 import TheError from '@/components/TheError.vue';
 import TheDetails from '@/components/TheDetails.vue';
 import { useDetails } from '@/hooks/useDetails';
-const { code } = useRoute().params;
-const { details, status, error } = useDetails(Array.isArray(code) ? code[0] : code);
+
+const { details, status, error } = useDetails();
 </script>
 
 <template>

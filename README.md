@@ -15,7 +15,8 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshots/Screenshot.png)
+![](./screenshots/Screenshot-light.png)
+![](./screenshots/Screenshot-dark.png)
 
 ### Links
 
